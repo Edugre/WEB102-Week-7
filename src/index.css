@@ -2,6 +2,8 @@
   box-sizing: border-box;
 }
 
+
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -30,9 +32,12 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
   background-image: url("src/assets/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 h1 {
@@ -73,8 +78,8 @@ button:focus-visible {
 }
 
 .app-container {
-  min-height: 100vh;
-  min-width: 100vw;
+  height: 100vh;
+  width: 100vw;
   padding: 2rem;
   display: flex;
   justify-content: space-between;
@@ -83,56 +88,83 @@ button:focus-visible {
 }
 .side-bar {
   background-color: #1a1a1a;
-  width: 30%;
-  padding: 2rem;
+  width: 20%;
+  padding: 1.5rem;
   border-radius: 25px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   backdrop-filter: blur(4px);
   background-color: hsla(0, 0%, 100%, .092);
   box-shadow: 0 15px 25px hsla(0, 2%, 50%, .154);
+  overflow-y: auto;
+  max-height: 100%;
+}
+.side-bar h1 {
+  font-size: 1.8rem;
+  margin: 0.5rem 0;
+}
+.side-bar-list h1 {
+  justify-content: center;
+  align-items: center;
+}
+.side-bar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 .dashboard-container {
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
+  overflow-y: auto;
 }
 .cards-container {
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
+  height: 10%;
 }
 .card {
   background-color: #1a1a1a;
   text-align: center;
-  padding: 20px 50px;
+  display: flex;
+  padding: 3px 50px;
+  gap: 10px;
   border-radius: 25px;
   backdrop-filter: blur(4px);
   background-color: hsla(0, 0%, 100%, .092);
   box-shadow: 0 15px 25px hsla(0, 2%, 50%, .154);
 }
 .dashboard {
-  background-color: #1a1a1a;
   width: 100%;
   height: 100%;
   border-radius: 25px;
-  padding: 30px;
+  padding: 20px;
   backdrop-filter: blur(4px);
   background-color: hsla(0, 0%, 100%, .092);
   box-shadow: 0 15px 25px hsla(0, 2%, 50%, .154);
+  overflow: auto;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .games_table {
     width: 100%;
     border-collapse: collapse; 
-    table-layout: fixed;   
+    table-layout: fixed;
+    max-width: 100%;
 }
 .games_table th,
 .games_table td {
-  padding: 0.75rem 1.5rem; 
+  padding: 0.75rem 1rem; 
   text-align: left; 
   border-bottom: white solid 0.5px;
+}
+.games_table td:nth-child(4) {
+  white-space: nowrap;
 }
 .search_filter {
   display: flex;
@@ -140,4 +172,110 @@ button:focus-visible {
   gap: 15px;
   height: 50px;
   padding: 7px;
+}
+.game-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    backdrop-filter: blur(4px);
+    background-color: hsla(0, 0%, 100%, .092);
+    box-shadow: 0 15px 25px hsla(0, 2%, 50%, .154);
+    border-radius: 25px;
+    padding: 30px;
+    overflow: hidden;
+}
+.game-info {
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding-right: 20px;
+  flex: 0 0 60%;
+}
+.game-info h2 {
+  margin-bottom: 0px;
+}
+.release-platforms {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0px;
+  gap: 0px;
+}
+.description-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.title-desc {
+  display: flex;
+  flex-direction: column;
+}
+.title-desc p{
+  margin: 10px;
+}
+.title-desc p {
+  margin-bottom: 1px;
+}
+
+.screenshots {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.main-screenshot {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+.screenshot-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 500px;
+}
+.grid-2x2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 10px;
+}
+.small-screenshot {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.charts-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  overflow: auto;
+  align-items: center;
+  gap: 20px;
+}
+.dashboard-charts {
+  display: flex;
+  gap: 10px;
+  height: 100%;
+  overflow-y: auto;
+}
+.chart {
+    backdrop-filter: blur(4px);
+    background-color: hsla(0, 0%, 100%, .092);
+    box-shadow: 0 15px 25px hsla(0, 2%, 50%, .154);
+    width: 80%;
+    height: 300px;
+    border-radius: 25px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
 }
