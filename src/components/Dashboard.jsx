@@ -104,6 +104,16 @@ const Dashboard = () => {
         return matchesTitle && matchesGenre;
     });
 
+    const toggleCharts = () => {
+        const charts = document.getElementsByClassName("charts-container")[0]
+        if (charts.style.display === 'none') {
+          charts.style.display = 'flex'
+        }
+        else {
+          charts.style.display = 'none'
+        }
+    }
+
     return (
       <div className='dashboard-container'>
         <div className='cards-container'>
@@ -142,6 +152,7 @@ const Dashboard = () => {
                   <option key={genre} value={genre}>{genre}</option>
                 ))}
               </select>
+              <button type="button" onClick={toggleCharts}>📊 Toggle charts</button>
             </form>
             <table className='games_table'>
               <thead>
@@ -164,7 +175,7 @@ const Dashboard = () => {
               </tbody>
             </table>
           </div>
-          <div className='charts-container'>
+          <div className='charts-container' style={{display: 'none'}}>
               <div className='chart'>
                 <h4>Average Rating by Release Year</h4>
                 <ResponsiveContainer width="100%" height={200}>
@@ -179,7 +190,6 @@ const Dashboard = () => {
                       stroke="#82ca9d"
                       strokeWidth={2}
                       dot={{fill: '#82ca9d'}}
-                      isAnimationActive={false}
                     />
                   </LineChart>
                 </ResponsiveContainer>
@@ -193,7 +203,6 @@ const Dashboard = () => {
                       data={genreCount || []}
                       cx="50%"
                       cy="50%"
-                      isAnimationActive={false}
                       outerRadius={80}
                       fill="#8884d8"
                       />
