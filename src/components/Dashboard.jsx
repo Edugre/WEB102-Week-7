@@ -15,7 +15,7 @@ const Dashboard = () => {
     useEffect(() => {
         try {
         const fetchData = async () => {
-            const response = await fetch (`https://api.rawg.io/api/games?key=${import.meta.env.VITE_RAWG_API_KEY}&page_size=11`)
+            const response = await fetch (`https://api.rawg.io/api/games?key=${import.meta.env.VITE_RAWG_API_KEY}&page_size=11&page=${Math.floor((Math.random() * 100) + 1)}`)
             const data = await response.json()
             setGames(data.results)
         }
